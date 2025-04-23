@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>URL Statistics</title>
+</head>
+
+<body>
+    <h1>Statistics for {{ username }}</h1>
+
+    {% if is_admin %}
+    <form action="/stats">
+        <input type="text" name="username" placeholder="Username">
+        <button type="submit">View User Stats</button>
+    </form>
+    {% endif %}
+
+    <table>
+        <tr>
+            <th>Short Code</th>
+            <th>Original URL</th>
+            <th>Clicks</th>
+        </tr>
+        {% for stat in stats %}
+        <tr>
+            <td>{{ stat.short_code }}</td>
+            <td>{{ stat.original_url }}</td>
+            <td>{{ stat.clicks }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="/">Back to Home</a>
+</body>
+
+</html>
